@@ -4,5 +4,5 @@ class Api {
   String appVersion = '0.2.9';
 
   ////Add Goolemap APIkey , can get this key from 'console.cloud.google.com'
-  String mapAPI = 'AIzaSyAQxynnuP7YA--g-nqF9gyuxGTYv8AUEkA';
+ 
 }
