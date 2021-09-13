@@ -13,10 +13,9 @@ class DemoTimelINE extends StatefulWidget {
 const kTileHeight = 50.0;
 
 class _DemoTimeLineState extends State<DemoTimelINE> {
-
   ////Example Json String
   String timeline =
-      '{ "timelineDemo": [{"title": "บันทึกเวลาถึงที่หมาย","status":"done"},{"title": "ภาพก่อนสินค้าขึ้น","status": "done"},{"title": "อุณหภูมิก่อนขึ้นสินค้า","status": "inProgress"},{"title": "บันทึกเวลาเริ่มขึ้นสินค้า","status": "inProgress"},{"title": "ภาพสินค้าจัดเรียงในรถ","status": "inProgress"},{"title": "บันทึกเวลาขึ้นสินค้าเสร็จ","status": "inProgress"},{"title": "ภาพซีลปิดตู้","status": "inProgress"},{"title": "ประเมิน/ลงนาม","status": "inProgress"},{"title": "บันทึกเวลาออกรถ","status": "inProgress"}]}';
+      '{"timelineDemo": [{"title": "บันทึกเวลาถึงที่หมาย","status":"done"},{"title": "ภาพก่อนสินค้าขึ้น","status": "done"},{"title": "อุณหภูมิก่อนขึ้นสินค้า","status": "inProgress"},{"title": "บันทึกเวลาเริ่มขึ้นสินค้า","status": "inProgress"},{"title": "ภาพสินค้าจัดเรียงในรถ","status": "inProgress"},{"title": "บันทึกเวลาขึ้นสินค้าเสร็จ","status": "inProgress"},{"title": "ภาพซีลปิดตู้","status": "inProgress"},{"title": "ประเมิน/ลงนาม","status": "inProgress"},{"title": "บันทึกเวลาออกรถ","status": "inProgress"}]}';
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +33,7 @@ class _DemoTimeLineState extends State<DemoTimelINE> {
             theme: TimelineThemeData(
               nodePosition: 0,
               connectorTheme: ConnectorThemeData(
-                thickness: 3.0,
+                thickness: 5.0,
                 color: Color(0xffd3d3d3),
               ),
               indicatorTheme: IndicatorThemeData(
@@ -43,16 +42,28 @@ class _DemoTimeLineState extends State<DemoTimelINE> {
             ),
             padding: EdgeInsets.symmetric(vertical: 20.0),
             builder: TimelineTileBuilder.connected(
-              itemExtentBuilder: (_, __) => kTileHeight,
+              /// ความยางของจุดหนึ่งไปอีกจุดหนึ่ง
+              itemExtentBuilder: (_, __) => 100.0,
               itemCount: lineData.timelineDemo.length,
 
+              /// ความกว้้างของ จุด (เป็น เปอเซ็น)
+              nodePositionBuilder: (_, index) {
+                return 0.05;
+              },
               //// Contents , In this case I user ListTile and add Button in trailing.
               contentsBuilder: (_, index) {
                 print('${lineData.timelineDemo[index].title}');
                 return ListTile(
                   title: Text('${lineData.timelineDemo[index].title}'),
                   trailing: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      /* switch (lineData.timelineDemo[index].workid) {
+                        case 41:
+                            Navigator.push.....
+                          break;
+                        default:
+                      }*/
+                    },
                     style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all(Colors.green)),
@@ -63,7 +74,7 @@ class _DemoTimeLineState extends State<DemoTimelINE> {
 
               //// set line(s) solid or dashed and change there colors
               connectorBuilder: (_, index, __) {
-                if (index == 0) {
+                if (lineData.timelineDemo[index].status == 'done') {
                   return SolidLineConnector(color: Color(0xff6ad192));
                 } else {
                   return DashedLineConnector(
@@ -82,7 +93,7 @@ class _DemoTimeLineState extends State<DemoTimelINE> {
                   case 'inProgress':
                     return OutlinedDotIndicator(
                       color: Color(0xff6ad192),
-                      borderWidth: 5.0,
+                      borderWidth: 4.0,
                       backgroundColor: Colors.white,
                     );
                   default:
