@@ -21,9 +21,9 @@ dependencies:
 #Google Map
   location: ^4.2.0
   google_maps_flutter: ^2.0.8
+
 #Timeline
   timelines: ^0.1.0
-  timeline_tile: ^2.0.0
 
 dev_dependencies:
   flutter_test:
