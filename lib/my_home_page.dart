@@ -1,3 +1,4 @@
+import 'package:demo_locations/demo_timeline.dart';
 import 'package:demo_locations/take_picture.dart';
 import 'package:demo_locations/result_take_picture.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             ElevatedButton(
               onPressed: () {
-                 Navigator.of(context)
+                Navigator.of(context)
                     .push(MaterialPageRoute(builder: (_) => TakePicture()));
               },
               child: Container(
@@ -42,21 +43,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            // SizedBox(
-            //   height: 30.0,
-            // ),
-            // ElevatedButton(
-            //   onPressed: () {
-            //     Navigator.of(context)
-            //         .push(MaterialPageRoute(builder: (_) => TakeText()));
-            //   },
-            //   child: Container(
-            //     margin: EdgeInsets.all(30.0),
-            //     child: Text(
-            //       'Put Text',
-            //     ),
-            //   ),
-            // ),
+            SizedBox(
+              height: 30.0,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => DemoTimelINE()));
+              },
+              child: Container(
+                margin: EdgeInsets.all(30.0),
+                child: Text(
+                  'Demo Timeline',
+                ),
+              ),
+            ),
           ],
         ),
       ),
