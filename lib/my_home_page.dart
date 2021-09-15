@@ -1,3 +1,4 @@
+import 'package:demo_locations/Demo_WorkProgress/demo_work_progress.dart';
 import 'package:demo_locations/demo_timeline.dart';
 import 'package:demo_locations/take_picture.dart';
 import 'package:demo_locations/result_take_picture.dart';
@@ -55,6 +56,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 margin: EdgeInsets.all(30.0),
                 child: Text(
                   'Demo Timeline',
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 30.0,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => DemoWorkProgress()));
+              },
+              child: Container(
+                margin: EdgeInsets.all(30.0),
+                child: Text(
+                  'DEMO WorkProgress',
                 ),
               ),
             ),
