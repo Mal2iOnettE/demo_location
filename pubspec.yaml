@@ -14,8 +14,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+#Default
   cupertino_icons: ^1.0.2
+
+#Image
   image_picker: ^0.7.3
 
 #Google Map
@@ -24,6 +26,9 @@ dependencies:
 
 #Timeline
   timelines: ^0.1.0
+
+#Signature
+  signature: ^4.1.1
 
 dev_dependencies:
   flutter_test:
