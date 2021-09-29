@@ -29,6 +29,9 @@ class _DemoSignatureState extends State<DemoSignature> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Demo - Signature'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView(

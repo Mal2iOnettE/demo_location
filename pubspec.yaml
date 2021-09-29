@@ -30,6 +30,9 @@ dependencies:
 #Signature
   signature: ^4.1.1
 
+#Timer 
+  intl: ^0.17.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

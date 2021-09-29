@@ -1,3 +1,4 @@
+import 'package:demo_locations/Demo_Detail/demo_details.dart';
 import 'package:demo_locations/Demo_Signature/demo_signature.dart';
 import 'package:demo_locations/Demo_WorkProgress/demo_work_progress.dart';
 import 'package:demo_locations/demo_timeline.dart';
@@ -15,21 +16,33 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  Color bgColor = Colors.green;
+  int _selectedIndex = 0;
 
-  void _incrementCounter() {
+  static const List<Widget> _widgetOptions = <Widget>[
+    TakePicture(),
+    DemoDetails(),
+    DemoTimelINE(),
+    DemoWorkProgress(),
+    DemoSignature(),
+  ];
+
+  void _onItemTapped(int index) {
     setState(() {
-      _counter++;
+      _selectedIndex = index;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('DEMO APP : LOCATIONS'),
-      ),
+      // appBar: AppBar(
+      //   title: Text('DEMO APP : LOCATIONS'),
+      // ),
       body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      /*body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -80,8 +93,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => DemoSignature()));
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (_) => DemoSignature()));
               },
               child: Container(
                 margin: EdgeInsets.all(30.0),
@@ -92,6 +105,39 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
+      ),*/
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'เมนูหลัก',
+            backgroundColor: bgColor,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.business),
+            label: 'รายละเอียด',
+            backgroundColor: bgColor,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: 'ปฏิบัติงาน',
+            backgroundColor: bgColor,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'ส่งกลับ',
+            backgroundColor: bgColor,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.car_rental),
+            label: 'ปิดงาน',
+            backgroundColor: bgColor,
+          ),
+        ],
       ),
     );
   }

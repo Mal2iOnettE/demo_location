@@ -78,6 +78,7 @@ class _TakePictureState extends State<TakePicture> {
     return Scaffold(
         appBar: AppBar(
           title: Text('PICTURE and Location'),
+          backgroundColor: Colors.green,
         ),
         body: Center(
           child: Padding(
